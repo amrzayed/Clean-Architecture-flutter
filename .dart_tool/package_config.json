@@ -44,30 +44,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "connectivity",
-      "rootUri": "file:///Users/amr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity-0.4.9+5",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
-      "name": "connectivity_for_web",
-      "rootUri": "file:///Users/amr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_for_web-0.3.1+4",
-      "packageUri": "lib/",
-      "languageVersion": "2.6"
-    },
-    {
-      "name": "connectivity_macos",
-      "rootUri": "file:///Users/amr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_macos-0.1.0+7",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
-      "name": "connectivity_platform_interface",
-      "rootUri": "file:///Users/amr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_platform_interface-1.0.6",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/amr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.4",
       "packageUri": "lib/",
@@ -78,6 +54,12 @@
       "rootUri": "file:///Users/amr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/dartz-0.8.9",
       "packageUri": "lib/",
       "languageVersion": "1.24"
+    },
+    {
+      "name": "data_connection_checker",
+      "rootUri": "file:///Users/amr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/data_connection_checker-0.3.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "equatable",
@@ -350,7 +332,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-07-20T07:24:54.811342Z",
+  "generated": "2022-07-21T09:09:23.745159Z",
   "generator": "pub",
   "generatorVersion": "2.16.0"
 }

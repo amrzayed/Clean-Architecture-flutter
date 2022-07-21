@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:learn/core/error/exceptions.dart';
 import 'package:learn/core/error/failure.dart';
-import 'package:learn/core/platform/network_info.dart';
+import 'package:learn/core/network/network_info.dart';
 import 'package:learn/features/number_trivia/data/datasources/nunmber_trivia_local_data_source.dart';
 import 'package:learn/features/number_trivia/data/datasources/nunmber_trivia_remote_data_source.dart';
 import 'package:learn/features/number_trivia/domain/entities/number_trivia.dart';
