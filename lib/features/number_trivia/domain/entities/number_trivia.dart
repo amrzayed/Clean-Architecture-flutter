@@ -9,4 +9,6 @@ class NumberTrivia extends Equatable {
     required this.text,
     required this.number,
   }) : super([text, number]);
+  @override
+  List<Object> get props => [text, number];
 }
