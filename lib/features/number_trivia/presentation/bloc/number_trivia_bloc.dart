@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:learn/core/constats/strings.dart';
+import 'package:learn/core/error/failure.dart';
+import 'package:learn/core/usecases/usecase.dart';
 import 'package:learn/core/util/input_converter.dart';
 import 'package:learn/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:learn/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
@@ -13,7 +16,6 @@ part 'number_trivia_event.dart';
 part 'number_trivia_state.dart';
 
 class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
-
   final GetConcreteNumberTrivia getConcreteNumberTrivia;
   final GetRandomNumberTrivia getRandomNumberTrivia;
   final InputConverter inputConverter;
@@ -37,8 +39,39 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
         (failure) async* {
           yield Error(message: INVALID_INPUT_FAILURE_MESSAGE);
         },
-        (integer) => throw UnimplementedError(),
+        (integer) async* {
+          yield Loading();
+          final failureOrTrivia =
+              await getConcreteNumberTrivia(Params(number: integer));
+          yield* _eitherLoadedOrErrorState(failureOrTrivia);
+        },
       );
+    } else if (event is GetTriviaForRandomNumber) {
+      yield Loading();
+      final failureOrTrivia = await getRandomNumberTrivia(
+        NoParams(),
+      );
+      yield* _eitherLoadedOrErrorState(failureOrTrivia);
     }
+  }
+
+  String _mapFailureToMessage(Failure failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return SERVER_FAILURE_MESSAGE;
+      case CacheFailure:
+        return CACHE_FAILURE_MESSAGE;
+      default:
+        return 'Unexpected Error';
+    }
+  }
+
+  Stream<NumberTriviaState> _eitherLoadedOrErrorState(
+      Either<Failure, NumberTrivia> either,
+      ) async* {
+    yield either.fold(
+          (failure) => Error(message: _mapFailureToMessage(failure)),
+          (trivia) => Loaded(trivia: trivia),
+    );
   }
 }
