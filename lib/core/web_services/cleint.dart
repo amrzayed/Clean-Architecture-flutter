@@ -4,10 +4,10 @@ import 'package:learn/core/error/exceptions.dart';
 import 'package:learn/features/number_trivia/data/models/number_trivia_model.dart';
 import 'dart:convert';
 
-class Client {
+class ClientBase {
   late Dio _dio;
 
-  Client() {
+  ClientBase() {
     BaseOptions options = BaseOptions(
         baseUrl: baseUrl,
         receiveDataWhenStatusError: true,

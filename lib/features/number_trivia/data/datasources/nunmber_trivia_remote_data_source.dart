@@ -11,19 +11,19 @@ abstract class NumberTriviaRemoteDataSource{
 }
 
 class NumberTriviaRemoteDataSourceImp implements NumberTriviaRemoteDataSource{
-  final Client _client;
+  final ClientBase _client;
 
   NumberTriviaRemoteDataSourceImp(this._client);
 
   @override
   Future<NumberTriviaModel> getConcreteNumberTrivia(int number) async{
-    NumberTriviaModel triviaModel = await _client.getNumberTriviaResponse(baseUrl + "/$number");
+    NumberTriviaModel triviaModel = await _client.getNumberTriviaResponse(number.toString());
     return triviaModel;
   }
 
   @override
   Future<NumberTriviaModel> getRandomNumberTrivia() async{
-    NumberTriviaModel triviaModel = await _client.getNumberTriviaResponse(baseUrl + randomTrivia);
+    NumberTriviaModel triviaModel = await _client.getNumberTriviaResponse(randomTrivia);
     return triviaModel;
   }
 
